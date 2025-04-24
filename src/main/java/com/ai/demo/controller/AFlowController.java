@@ -3,7 +3,7 @@ package com.ai.demo.controller;
 import javax.annotation.Resource;
 
 import com.ai.demo.biz.AFlowBiz;
-import com.kuaiflow.client.open.bean.JsonResult;
+import com.aflow.client.open.bean.JsonResult;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("aflow/flow/demo/")
-public class FlowController {
+public class AFlowController {
 
     @Resource
     private AFlowBiz aFlowBiz;
