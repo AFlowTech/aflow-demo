@@ -1,4 +1,4 @@
-package com.kuaiflow.demo.biz;
+package com.ai.demo.biz;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.kuaiflow.client.open.FlowClient;
@@ -22,21 +22,21 @@ import org.springframework.stereotype.Service;
  * @since 2024/09/01
  */
 @Service
-public class KuaiFlowBiz {
+public class AFlowBiz {
 
     private FlowClient flowClient;
 
-    @Value("${kuai.flow.enterpriseCode}")
+    @Value("${a.flow.enterpriseCode}")
     private String enterpriseCode;
 
-    @Value("${kuai.flow.appId}")
+    @Value("${a.flow.appId}")
     private String appId;
 
-    @Value("${kuai.flow.appSecret}")
+    @Value("${a.flow.appSecret}")
     private String appSecret;
 
     //环境[beta:测试/prod:线上]
-    @Value("${kuai.flow.environmentType}")
+    @Value("${a.flow.environmentType}")
     private String environmentType;
 
     @PostConstruct

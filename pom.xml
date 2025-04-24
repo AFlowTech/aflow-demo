@@ -3,17 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.kuaiflow</groupId>
-    <artifactId>kuaiflow-demo</artifactId>
+    <groupId>com.aflow</groupId>
+    <artifactId>aflow-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>kuaiflow-demo</name>
+    <name>aflow-demo</name>
     <packaging>war</packaging>
-    <description>kuaiflow-demo</description>
+    <description>aflow-demo</description>
 
     <properties>
         <java.version>8</java.version>
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
-        <kuaiflow-client.version>0.0.21</kuaiflow-client.version>
+        <aflow-client.version>0.0.23</aflow-client.version>
         <junit.version>4.13.1</junit.version>
     </properties>
 
@@ -34,9 +34,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.kuaiflow</groupId>
-                <artifactId>kuaiflow-client</artifactId>
-                <version>${kuaiflow-client.version}</version>
+                <groupId>com.aflow</groupId>
+                <artifactId>aflow-client</artifactId>
+                <version>${aflow-client.version}</version>
             </dependency>
 
             <dependency>

@@ -1,11 +1,11 @@
-package com.kuaiflow.demo;
+package com.ai.demo;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import javax.annotation.Resource;
 
-import com.kuaiflow.demo.biz.KuaiFlowBiz;
+import com.ai.demo.biz.AFlowBiz;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -16,16 +16,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = com.kuaiflow.demo.KuaiflowDemoApplication.class)
-public class KuaiFlowDemoApplicationTests {
+@SpringBootTest(classes = DemoApplication.class)
+public class AFlowDemoApplicationTests {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Resource
-	private KuaiFlowBiz kuaiFlowBiz;
+	private AFlowBiz aFlowBiz;
 
 	@Test
 	public void testGetAccessToken() {
-		String token = kuaiFlowBiz.getAccessToken("9910031941","c94b1dcd");
+		String token = aFlowBiz.getAccessToken("9910031941","c94b1dcd");
 		logger.info(token);
 		assertNotNull(token);
 	}
@@ -33,7 +33,7 @@ public class KuaiFlowDemoApplicationTests {
 
 	@Test
 	public void saveQDictData() {
-		Long id = kuaiFlowBiz.saveQDictData();
+		Long id = aFlowBiz.saveQDictData();
 		logger.info(String.valueOf(id));
 		assertNotNull(id);
 

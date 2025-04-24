@@ -1,9 +1,9 @@
-package com.kuaiflow.demo.controller;
+package com.ai.demo.controller;
 
 import javax.annotation.Resource;
 
+import com.ai.demo.biz.AFlowBiz;
 import com.kuaiflow.client.open.bean.JsonResult;
-import com.kuaiflow.demo.biz.KuaiFlowBiz;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
  * demo
  */
 @RestController
-@RequestMapping("kuai/flow/demod/")
-public class KuaiFlowController {
+@RequestMapping("aflow/flow/demo/")
+public class FlowController {
 
     @Resource
-    private KuaiFlowBiz kuaiFlowBiz;
+    private AFlowBiz aFlowBiz;
 
     /**
      * 发起订单
      */
     @PostMapping("start_flow")
     public JsonResult<Long> startFlow() {
-        return JsonResult.success(kuaiFlowBiz.startFlow());
+        return JsonResult.success(aFlowBiz.startFlow());
     }
 
 
@@ -35,6 +35,6 @@ public class KuaiFlowController {
         //从登陆上下文获取、以及获取到飞书/钉钉Id
         String customUserCode ="";
         String linkUserCode = "";
-        return JsonResult.success(kuaiFlowBiz.getAccessToken(customUserCode,linkUserCode));
+        return JsonResult.success(aFlowBiz.getAccessToken(customUserCode,linkUserCode));
     }
 }
