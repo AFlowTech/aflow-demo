@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<jmxConfigurator />
+
+	<property name="LOG_HOME" value="${CATALINA_BASE}/logs"/>
+
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]traceId[%X{traceId}] %5p %logger{0}:%L] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- default 日志输出，按照每天生成日志文件 -->
+	<appender name="DEFAULT-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/default.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--日志文件输出的文件名 -->
+			<FileNamePattern>${LOG_HOME}/default.log.%d{yyyy-MM-dd}</FileNamePattern>
+			<!--日志文件保留天数 -->
+			<MaxHistory>7</MaxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]traceId[%X{traceId}] %5p %logger{0}:%L] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- error 日志输出，按照每天生成日志文件 -->
+	<appender name="ERROR-APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--日志文件输出的文件名 -->
+			<FileNamePattern>${LOG_HOME}/error.log.%d{yyyy-MM-dd}</FileNamePattern>
+			<!--日志文件保留天数 -->
+			<MaxHistory>7</MaxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]traceId[%X{traceId}] %5p %logger{0}:%L] %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 打印warn日志 -->
+			<level>WARN</level>
+			<onMatch>ACCEPT</onMatch>
+		</filter>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 打印error日志 -->
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<appender name="requestAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/request.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/request.log.%d{yyyy-MM-dd}.gz
+			</fileNamePattern>
+			<MaxHistory>15</MaxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]traceId[%X{traceId}][%highlight(%5p)][%logger{0}:%L] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- request logger -->
+	<logger name="request_logger" level="INFO" additivity="false">
+		<appender-ref ref="requestAppender" />
+	</logger>-
+
+	<!-- sql 日志 -->
+	<logger name="org.apache.ibatis" level="INFO" />
+	<logger name="org.springframework.jdbc.core" level="INFO" />
+	<logger name="com.ibatis" level="INFO" />
+	<logger name="java.sql.Connection" level="INFO" />
+	<logger name="java.sql.Statement" level="INFO" />
+	<logger name="java.sql.PreparedStatement" level="INFO" />
+	<logger name="java.sql.ResultSet" level="INFO" />
+
+	<root level="INFO">
+		<appender-ref ref="DEFAULT-APPENDER" />
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
