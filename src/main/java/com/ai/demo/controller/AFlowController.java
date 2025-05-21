@@ -2,8 +2,8 @@ package com.ai.demo.controller;
 
 import javax.annotation.Resource;
 
-import com.aflow.client.open.bean.JsonResult;
 import com.ai.demo.biz.AFlowBiz;
+import fan.aiflow.client.open.bean.JsonResult;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

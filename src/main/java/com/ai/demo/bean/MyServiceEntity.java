@@ -1,9 +1,10 @@
 package com.ai.demo.bean;
 
-import com.aflow.client.open.anotation.AField;
-import com.aflow.client.open.bean.entity.AEntity;
 
 import java.util.List;
+
+import fan.aiflow.client.open.anotation.AField;
+import fan.aiflow.client.open.bean.entity.AEntity;
 
 /**
  * @author Sky

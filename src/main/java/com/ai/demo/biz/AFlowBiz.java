@@ -1,15 +1,15 @@
 package com.ai.demo.biz;
 
-import com.aflow.client.open.FlowClient;
-import com.aflow.client.open.anotation.AService;
-import com.aflow.client.open.bean.CustomAuthentication;
-import com.aflow.client.open.bean.dict.AConvertField;
-import com.aflow.client.open.bean.dict.ADictData;
-import com.aflow.client.open.bean.dict.ADictFieldValue;
-import com.aflow.client.open.bean.entity.AEntity;
-import com.aflow.client.open.bean.entity.DefaultAEntity;
-import com.aflow.client.open.bean.enums.ALinkEnterpriseType;
-import com.aflow.client.open.util.JsonUtil;
+import fan.aiflow.client.open.FlowClient;
+import fan.aiflow.client.open.anotation.AService;
+import fan.aiflow.client.open.bean.CustomAuthentication;
+import fan.aiflow.client.open.bean.dict.AConvertField;
+import fan.aiflow.client.open.bean.dict.ADictData;
+import fan.aiflow.client.open.bean.dict.ADictFieldValue;
+import fan.aiflow.client.open.bean.entity.AEntity;
+import fan.aiflow.client.open.bean.entity.DefaultAEntity;
+import fan.aiflow.client.open.bean.enums.ALinkEnterpriseType;
+import fan.aiflow.client.open.util.JsonUtil;
 import com.ai.demo.bean.InnerResp;
 import com.ai.demo.bean.MyServiceEntity;
 import com.ai.demo.bean.MyServiceResp;

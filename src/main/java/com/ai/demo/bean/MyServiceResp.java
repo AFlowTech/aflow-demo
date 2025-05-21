@@ -1,6 +1,7 @@
 package com.ai.demo.bean;
 
-import com.aflow.client.open.bean.entity.AEntity;
+
+import fan.aiflow.client.open.bean.entity.AEntity;
 
 /**
  * @author jixiaoliang
