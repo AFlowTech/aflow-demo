@@ -5,7 +5,7 @@
 
     <groupId>com.aflow</groupId>
     <artifactId>aflow-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOTs</version>
     <name>aflow-demo</name>
     <packaging>war</packaging>
     <description>aflow-demo</description>
