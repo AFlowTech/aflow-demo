@@ -14,7 +14,7 @@ import org.springframework.context.annotation.*;
 
 
 @SpringBootApplication
-@EnableAFlow(app = "demo3", appName = "demo测试3")
+@EnableAFlow(app = "product", appName = "商品主档系统")
 @EnableAspectJAutoProxy(exposeProxy = true)
 @Scope(proxyMode = ScopedProxyMode.NO)
 @ComponentScan({"com.ai","fan.aiflow"})

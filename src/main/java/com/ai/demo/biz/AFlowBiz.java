@@ -7,12 +7,8 @@ import fan.aiflow.client.open.bean.dict.AConvertField;
 import fan.aiflow.client.open.bean.dict.ADictData;
 import fan.aiflow.client.open.bean.dict.ADictFieldValue;
 import fan.aiflow.client.open.bean.entity.AEntity;
-import fan.aiflow.client.open.bean.entity.DefaultAEntity;
 import fan.aiflow.client.open.bean.enums.ALinkEnterpriseType;
 import fan.aiflow.client.open.util.JsonUtil;
-import com.ai.demo.bean.InnerResp;
-import com.ai.demo.bean.MyServiceEntity;
-import com.ai.demo.bean.MyServiceResp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -102,46 +98,5 @@ public class AFlowBiz {
 
     public Long startFlow() {
         return null;
-    }
-
-    @AService(name = "测试serviceTask",description = "这是一个用来测试的serviceTask")
-    public MyServiceResp testService(MyServiceEntity param){
-        logger.info("第一个service:{}", JsonUtil.of(param));
-        MyServiceResp myServiceResp = new MyServiceResp();
-        myServiceResp.setCode(param.getShopCode());
-        myServiceResp.setName(param.getShopName());
-        InnerResp innerResp = new InnerResp();
-        innerResp.setInnerCode("innerCode");
-        innerResp.setInnerName("innerName");
-        myServiceResp.setInnerResp(innerResp);
-        return myServiceResp;
-    }
-
-    public String testClient() {
-        logger.info("client:{}",flowClient);
-        return "ok";
-    }
-
-    public static void main(String[] args) {
-        AFlowBiz biz = new AFlowBiz();
-        Method method1 = Arrays.stream(AFlowBiz.class.getMethods()).filter(method -> method.isAnnotationPresent(AService.class)).findFirst().get();
-        MyServiceEntity aEntity = new MyServiceEntity();
-
-        Class<?>[] args1 = method1.getParameterTypes();
-
-        Class<? extends AEntity> arg = (Class<? extends AEntity>) args1[0];
-
-        AEntity flowEntity = JsonUtil.of("{\n" +
-                "    \"TASK_ORDER_ID\": \"001\",\n" +
-                "    \"BUSINESS_KEY\": \"003\",\n" +
-                "    \"PROCESS_INSTANCE_ID\": \"002\",\n" +
-                "    \"PARAMETER\":\n" +
-                "    {\n" +
-                "        \"code\": \"123\",\n" +
-                "        \"name\": \"东皇太一\"\n" +
-                "    }\n" +
-                "}", arg);
-        Object o = ReflectionUtils.invokeMethod(method1, biz, flowEntity);
-        System.out.println(JsonUtil.of(o));
     }
 }

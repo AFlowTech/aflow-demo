@@ -1,7 +1,6 @@
 package com.ai.demo;
 
 import fan.aiflow.client.open.util.AvroUtil;
-import com.ai.demo.bean.MyServiceEntity;
 
 /**
  * @author Sky
@@ -12,6 +11,6 @@ public class A {
 
         // 获取带有注释的Avro Schema
        // System.out.println(AvroUtil.getJsonSchema(MyServiceEntity.class));
-        System.out.println(AvroUtil.getCustomSchema(MyServiceEntity.class));
+        //System.out.println(AvroUtil.getCustomSchema(MyServiceEntity.class));
     }
 }
