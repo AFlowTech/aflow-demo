@@ -4,6 +4,7 @@ import com.ai.demo.bean.*;
 import com.ai.demo.dao.SkuDao;
 import fan.aiflow.client.open.anotation.AService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.stream.Collectors;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
  * @author Sky
  * @since 2025/05/24
  **/
+@Component
 public class SkuBiz {
 
     @Resource

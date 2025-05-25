@@ -25,10 +25,10 @@ public class DemoApplication  extends SpringBootServletInitializer {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public FlowServerConfig flowServerConfig(){
 		return new FlowServerConfig("http://localhost:8080","http://localhost:8080","http://localhost:8080");
-	}
+	}*/
 	@Bean
 	public Credential credential(){
 		return new Credential("aflow","prod", "aflow","FkD58UP2noEEyUMcY68JlgZUbtgkNFa1");

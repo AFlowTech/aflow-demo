@@ -1,6 +1,7 @@
 package com.ai.demo.bean;
 
 import fan.aiflow.client.open.anotation.AField;
+import fan.aiflow.client.open.bean.entity.AEntity;
 import lombok.Data;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @since 2025/05/24
  **/
 @Data
-public class SkuImgParam {
+public class SkuImgParam implements AEntity {
     @AField(doc = "商品编码")
     private String skuCode;
 
