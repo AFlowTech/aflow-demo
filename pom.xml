@@ -5,7 +5,7 @@
 
     <groupId>com.aflow</groupId>
     <artifactId>aflow-demo</artifactId>
-    <version>0.0.1-SNAPSHOTs</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>aflow-demo</name>
     <packaging>war</packaging>
     <description>aflow-demo</description>
@@ -13,10 +13,19 @@
     <properties>
         <java.version>8</java.version>
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
-        <aiflow-spring-boot-starter.version>0.0.4-SNAPSHOTs</aiflow-spring-boot-starter.version>
+        <aiflow-spring-boot-starter.version>0.0.5-SNAPSHOT</aiflow-spring-boot-starter.version>
         <junit.version>4.13.1</junit.version>
         <lombok.version>1.18.32</lombok.version>
+        <guava.version>32.0.1-jre</guava.version>
     </properties>
+
+    <!--    <repositories>
+		  <repository>
+			  <id>central</id>
+			  <name>Maven Central</name>
+			  <url>https://repo1.maven.org/maven2/</url>
+		  </repository>
+	  </repositories>-->
 
     <dependencyManagement>
         <dependencies>
@@ -54,10 +63,21 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,18 +102,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
+            <!--<exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            </exclusions>-->
         </dependency>
         <!-- 添加Netty清理依赖 -->
         <dependency>
@@ -110,13 +124,13 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- 添加Servlet API -->
+        <!--&lt;!&ndash; 添加Servlet API &ndash;&gt;
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>fan.aiflow</groupId>
@@ -139,17 +153,38 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
     </dependencies>
 
-    <!--    <repositories>
-            <repository>
-                <id>central</id>
-                <name>Maven Central</name>
-                <url>https://repo1.maven.org/maven2/</url>
-            </repository>
-        </repositories>-->
-
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <!--            <resource>-->
+            <!--                <directory>src/main/resources.local</directory>-->
+            <!--                &lt;!&ndash; 可选：只包含特定文件 &ndash;&gt;-->
+            <!--                <includes>-->
+            <!--                    <include>**/*.properties</include>-->
+            <!--                    <include>**/*.xml</include>-->
+            <!--                    <include>**/*.yml</include>-->
+            <!--                </includes>-->
+            <!--            </resource>-->
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <!-- 如果需要，也可以包含测试专用的local配置 -->
+            <testResource>
+                <directory>src/test/resources.local</directory>
+            </testResource>
+        </testResources>
+
         <plugins>
 
             <plugin>
@@ -182,7 +217,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.1</version> <!-- Works with older Maven -->
+                <version>3.10.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -236,4 +271,72 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <profile.active>local</profile.active>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profile.active>dev</profile.active>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                    </resource>
+                    <resource>
+                        <directory>src/main/resources.dev</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profile.active>prod</profile.active>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                    </resource>
+                    <resource>
+                        <directory>src/main/resources.prod</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>dev-qw</id>
+            <properties>
+                <profile.active>dev-qw</profile.active>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                    </resource>
+                    <resource>
+                        <directory>src/main/resources.dev-qw</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>beta</id>
+            <properties>
+                <profile.active>beta</profile.active>
+            </properties>
+        </profile>
+    </profiles>
 </project>

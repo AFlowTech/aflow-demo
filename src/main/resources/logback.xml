@@ -2,7 +2,10 @@
 <configuration>
 	<jmxConfigurator />
 
-	<property name="LOG_HOME" value="${CATALINA_BASE}/logs"/>
+	<property name="LOG_HOME" value="${CATALINA_BASE}"/>
+	<!-- <property name="LOG_HOME" value="./log/"/> -->
+
+
 
 	<!-- 控制台输出 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -67,7 +70,7 @@
 	<!-- request logger -->
 	<logger name="request_logger" level="INFO" additivity="false">
 		<appender-ref ref="requestAppender" />
-	</logger>-
+	</logger>
 
 	<!-- sql 日志 -->
 	<logger name="org.apache.ibatis" level="INFO" />

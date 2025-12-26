@@ -1,6 +1,7 @@
 package com.ai.demo.bean;
 
 import fan.aiflow.client.open.anotation.AField;
+import fan.aiflow.client.open.anotation.AServiceReqField;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -11,12 +12,16 @@ import java.math.BigDecimal;
  **/
 @Data
 public class SpecParam {
-    @AField(doc = "规格描述")
+    @AServiceReqField(doc = "规格描述")
     private String expression;
 
-    @AField(doc = "换算比例")
+    @AServiceReqField(doc = "换算比例")
     private Integer qty;
 
-    @AField(doc = "价格")
+    @AServiceReqField(doc = "价格")
     private BigDecimal price;
+
+    private String unit;
+
+    private String newDesc;
 }

@@ -2,11 +2,17 @@ package com.ai.demo.controller;
 
 import com.ai.demo.bean.*;
 import com.ai.demo.biz.SkuBiz;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  *
@@ -23,6 +29,7 @@ import javax.annotation.Resource;
  * @since 2025/05/24
  **/
 
+@Slf4j
 @RestController
 @RequestMapping("aflow/flow/demo/sku")
 public class SkuController {
@@ -37,6 +44,16 @@ public class SkuController {
     public String createSku(SkuParam skuParam) {
         return skuBiz.createSku(skuParam);
     }
+
+    @GetMapping("healthCheck")
+    public String healthCheck() {
+        log.info("healthCheck");
+        log.warn("WARN!! healthCheck");
+        log.error("ERROR!! healthCheck");
+
+        return "OK";
+    }
+    
 
     /**
      * 完善商品图片
@@ -57,7 +74,7 @@ public class SkuController {
     }
 
     /**
-     * 编写商品卖点
+     * 填写库存策略
      * @return 商品完整信息
      */
     @PostMapping("updateInventoryStrategy")

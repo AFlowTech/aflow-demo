@@ -1,6 +1,7 @@
 package com.ai.demo.bean;
 
 import fan.aiflow.client.open.anotation.AField;
+import fan.aiflow.client.open.anotation.AServiceReqField;
 import fan.aiflow.client.open.bean.entity.AEntity;
 import lombok.Data;
 
@@ -12,12 +13,12 @@ import java.util.List;
  **/
 @Data
 public class SkuImgParam implements AEntity {
-    @AField(doc = "商品编码")
+    @AServiceReqField(doc = "商品编码")
     private String skuCode;
 
-    @AField(doc = "商品主图")
+    @AServiceReqField(doc = "商品主图")
     private String mainImg;
 
-    @AField(doc = "商品图片")
-    private List<String> imgList;
+    @AServiceReqField(doc = "商品图片")
+    private List<ImgInfo> imgList;
 }

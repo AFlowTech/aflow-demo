@@ -1,6 +1,7 @@
 package com.ai.demo.bean;
 
 import fan.aiflow.client.open.anotation.AField;
+import fan.aiflow.client.open.anotation.AServiceReqField;
 import fan.aiflow.client.open.bean.entity.AEntity;
 import lombok.Data;
 
@@ -13,13 +14,13 @@ import lombok.Data;
 @Data
 public class InventoryStrategy implements AEntity {
 
-    @AField(doc = "商品编码")
+    @AServiceReqField(doc = "商品编码")
     private String skuCode;
 
-    @AField(doc = "销售安全库存")
+    @AServiceReqField(doc = "销售安全库存")
     private Integer saleSafeInventory;
 
-    @AField(doc = "采购安全库存")
+    @AServiceReqField(doc = "采购安全库存")
     private Integer purchaseSafeInventory;
 
 }

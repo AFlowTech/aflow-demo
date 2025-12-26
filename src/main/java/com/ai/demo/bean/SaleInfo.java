@@ -1,6 +1,7 @@
 package com.ai.demo.bean;
 
 import fan.aiflow.client.open.anotation.AField;
+import fan.aiflow.client.open.anotation.AServiceReqField;
 import fan.aiflow.client.open.bean.entity.AEntity;
 import lombok.Data;
 
@@ -10,13 +11,13 @@ import lombok.Data;
  **/
 @Data
 public class SaleInfo implements AEntity {
-    @AField(doc = "商品名")
+    @AServiceReqField(doc = "商品名")
     private String skuCode;
 
-    @AField(doc = "卖点")
+    @AServiceReqField(doc = "卖点")
     private String sellingPoint;
 
-    @AField(doc = "促销词")
+    @AServiceReqField(doc = "促销词")
     private String promotionalSlogans;
 
 }
